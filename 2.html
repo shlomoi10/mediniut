@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סיר יוקרתי - אימוג'י חי (מתוקן)</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F1F5F9; 
+        }
+
+        svg {
+            width: 400px;
+            height: 400px;
+            overflow: visible;
+        }
+
+        .moving-part {
+            transition: transform 0.12s cubic-bezier(0.25, 1.5, 0.5, 1);
+        }
+
+        .eye-group {
+            transform-origin: center;
+            transform-box: fill-box;
+            animation: blink 5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <svg viewBox="0 0 400 400" id="pot-svg">
+        
+        <defs>
+            <!-- הגדרת צורת המכסה בתור "מסכה" (Mask) כדי שההשתקפות לא תצא החוצה -->
+            <clipPath id="lid-mask">
+                <path d="M 75 146 C 75 70, 325 70, 325 146 Z" />
+            </clipPath>
+        </defs>
+
+        <!-- צללית על הרצפה -->
+        <ellipse cx="200" cy="330" rx="110" ry="12" fill="#CBD5E1" opacity="0.8" />
+
+        <!-- === הידיות === -->
+        <path d="M 90 200 C 15 200, 15 270, 95 285" fill="none" stroke="#1E2328" stroke-width="26" stroke-linecap="round" />
+        <path d="M 90 200 C 15 200, 15 270, 95 285" fill="none" stroke="#2B3037" stroke-width="20" stroke-linecap="round" />
+        
+        <path d="M 310 200 C 385 200, 385 270, 305 285" fill="none" stroke="#1E2328" stroke-width="26" stroke-linecap="round" />
+        <path d="M 310 200 C 385 200, 385 270, 305 285" fill="none" stroke="#2B3037" stroke-width="20" stroke-linecap="round" />
+
+        <!-- === גוף הסיר === -->
+        <path d="M 85 160 L 315 160 L 305 290 Q 300 320 270 320 L 130 320 Q 100 320 95 290 Z" fill="#1E2328" />
+        <path d="M 85 160 L 315 160 L 305 290 Q 300 320 270 320 L 130 320 Q 100 320 95 290 Z" fill="#2B3037" transform="translate(-4, -4)" />
+        <path d="M 82 156 L 110 156 L 120 315 L 120 315 Q 98 312 91 286 Z" fill="#383E47" />
+
+        <!-- === המכסה והשוליים === -->
+        <rect x="75" y="150" width="250" height="12" rx="4" fill="#94A3B8" />
+        <rect x="75" y="150" width="250" height="4" rx="2" fill="#CBD5E1" />
+
+        <!-- הצללה מתחת למכסה -->
+        <path d="M 75 146 C 75 70, 325 70, 325 146 Z" fill="#D24A40" transform="translate(0, 4)" />
+        
+        <!-- כיפת המכסה -->
+        <path d="M 75 146 C 75 70, 325 70, 325 146 Z" fill="#EF6256" />
+        
+        <!-- ברק עדין שחתוך בצורה מושלמת לגבולות המכסה (בזכות המסכה) -->
+        <g clip-path="url(#lid-mask)">
+            <!-- צורת ההשתקפות (כעת היא יכולה לגלוש שמאלה בבטחה, כי היא תיחתך במדויק בקו של המכסה) -->
+            <path d="M 60 150 C 60 60, 180 50, 200 50 C 130 60, 100 100, 100 150 Z" fill="#FFFFFF" opacity="0.2" />
+        </g>
+
+        <!-- ידית המכסה -->
+        <path d="M 185 75 L 215 75 L 210 95 L 190 95 Z" fill="#C0453A" />
+        <rect x="165" y="55" width="70" height="20" rx="10" fill="#EAB308" />
+        <rect x="165" y="55" width="70" height="6" rx="3" fill="#FDE047" />
+
+
+        <!-- === הפנים === -->
+        <g transform="translate(0, 25)">
+            <circle cx="130" cy="205" r="12" fill="#FF8FAB" opacity="0.4" />
+            <circle cx="270" cy="205" r="12" fill="#FF8FAB" opacity="0.4" />
+
+            <!-- עין שמאל -->
+            <g class="eye-group">
+                <circle id="left-eye-bg" cx="155" cy="175" r="22" fill="#FFFFFF" />
+                <g id="left-pupil" class="moving-part">
+                    <circle cx="155" cy="175" r="11" fill="#181C20" />
+                    <circle cx="159" cy="170" r="4.5" fill="#FFFFFF" /> 
+                    <circle cx="151" cy="178" r="2" fill="#FFFFFF" />
+                </g>
+            </g>
+
+            <!-- עין ימין -->
+            <g class="eye-group">
+                <circle id="right-eye-bg" cx="245" cy="175" r="22" fill="#FFFFFF" />
+                <g id="right-pupil" class="moving-part">
+                    <circle cx="245" cy="175" r="11" fill="#181C20" />
+                    <circle cx="249" cy="170" r="4.5" fill="#FFFFFF" />
+                    <circle cx="241" cy="178" r="2" fill="#FFFFFF" />
+                </g>
+            </g>
+
+            <!-- פה ולשון -->
+            <g>
+                <path d="M 175 200 C 175 200, 200 235, 225 200 Z" fill="#181C20" />
+                
+                <circle id="tongue-anchor" cx="200" cy="210" r="1" fill="none" />
+                
+                <g id="tongue" class="moving-part">
+                    <path d="M 189 205 L 189 230 A 11 11 0 0 0 211 230 L 211 205 Z" fill="#FB7185" />
+                    <line x1="200" y1="205" x2="200" y2="232" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" />
+                </g>
+
+                <path d="M 172 200 Q 200 208 228 200" stroke="#2B3037" stroke-width="5" stroke-linecap="round" fill="none" />
+            </g>
+        </g>
+    </svg>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            function moveElement(elemId, bgElemId, maxDistance) {
+                const elem = document.getElementById(elemId);
+                const bgElem = document.getElementById(bgElemId);
+                
+                const rect = bgElem.getBoundingClientRect();
+                const centerX = rect.left + (rect.width / 2);
+                const centerY = rect.top + (rect.height / 2);
+
+                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
+                
+                const moveX = Math.cos(angle) * maxDistance;
+                const moveY = Math.sin(angle) * maxDistance;
+
+                elem.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+
+            moveElement('left-pupil', 'left-eye-bg', 8);
+            moveElement('right-pupil', 'right-eye-bg', 8);
+            moveElement('tongue', 'tongue-anchor', 3);
+        });
+    </script>
+
+</body>
+</html>
