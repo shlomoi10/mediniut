@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סיר יוקרתי - אדים מבפנים</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F1F5F9; 
+        }
+
+        svg {
+            width: 400px;
+            height: 400px;
+            overflow: visible;
+            cursor: pointer; 
+            user-select: none; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* תנועת העיניים והלשון */
+        .moving-part {
+            transition: transform 0.12s cubic-bezier(0.25, 1.5, 0.5, 1);
+        }
+
+        /* מצמוץ עיניים */
+        .eye-group {
+            transform-origin: center;
+            transform-box: fill-box;
+            animation: blink 5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+
+        /* --- אנימציות פתיחת המכסה והאדים --- */
+        
+        #lid-group {
+            transform-origin: 200px 146px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* המצב הפתוח של המכסה */
+        #lid-group.open {
+            transform: translateY(-40px) translateX(-15px) rotate(-8deg);
+        }
+
+        /* קבוצת האדים - עכשיו יש לה מסכה שחותכת אותה בקו הסיר */
+        #steam-wrapper {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none; 
+        }
+
+        #steam-wrapper.show {
+            opacity: 1;
+        }
+
+        .steam-bubble {
+            transform-origin: center;
+            transform-box: fill-box;
+            animation: rise 2.2s infinite ease-in;
+        }
+
+        /* זמני השהיה שונים */
+        .steam-1 { animation-delay: 0s; }
+        .steam-2 { animation-delay: 0.7s; }
+        .steam-3 { animation-delay: 1.4s; }
+
+        /* האדים מתחילים עכשיו נמוך יותר בתוך המסכה ויוצאים למעלה */
+        @keyframes rise {
+            0% { transform: translateY(30px) scale(0.5); opacity: 0; }
+            30% { opacity: 0.8; }
+            100% { transform: translateY(-70px) scale(1.5); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <svg viewBox="0 0 400 400" id="pot-svg">
+        
+        <defs>
+            <!-- מסכה קיימת למכסה -->
+            <clipPath id="lid-mask">
+                <path d="M 75 146 C 75 70, 325 70, 325 146 Z" />
+            </clipPath>
+
+            <!-- מסכה חדשה לאדים: חותכת בדיוק בקו הפתיחה של הסיר (y=152) -->
+            <clipPath id="steam-mask">
+                <rect x="0" y="0" width="400" height="152" />
+            </clipPath>
+        </defs>
+
+        <!-- צללית על הרצפה -->
+        <ellipse cx="200" cy="330" rx="110" ry="12" fill="#CBD5E1" opacity="0.8" />
+
+        <!-- === הידיות === -->
+        <path d="M 90 200 C 15 200, 15 270, 95 285" fill="none" stroke="#1E2328" stroke-width="26" stroke-linecap="round" />
+        <path d="M 90 200 C 15 200, 15 270, 95 285" fill="none" stroke="#2B3037" stroke-width="20" stroke-linecap="round" />
+        
+        <path d="M 310 200 C 385 200, 385 270, 305 285" fill="none" stroke="#1E2328" stroke-width="26" stroke-linecap="round" />
+        <path d="M 310 200 C 385 200, 385 270, 305 285" fill="none" stroke="#2B3037" stroke-width="20" stroke-linecap="round" />
+
+        <!-- === גוף הסיר === -->
+        <path d="M 85 160 L 315 160 L 305 290 Q 300 320 270 320 L 130 320 Q 100 320 95 290 Z" fill="#1E2328" />
+        <path d="M 85 160 L 315 160 L 305 290 Q 300 320 270 320 L 130 320 Q 100 320 95 290 Z" fill="#2B3037" transform="translate(-4, -4)" />
+        <path d="M 82 156 L 110 156 L 120 315 L 120 315 Q 98 312 91 286 Z" fill="#383E47" />
+
+        <!-- === קבוצת האדים === -->
+        <!-- כל האדים חתוכים על ידי steam-mask, כך שהם לא יכולים להופיע על גוף הסיר עצמו, רק מעליו -->
+        <g id="steam-wrapper">
+            <g clip-path="url(#steam-mask)">
+                <!-- האדים מתחילים עמוק בתוך הסיר (y=180) ועולים למעלה באנימציה -->
+                <path class="steam-bubble steam-1" d="M 170 180 Q 150 140 160 100 Q 180 60 150 30" stroke="#FFFFFF" stroke-width="16" fill="none" stroke-linecap="round" opacity="0" />
+                <path class="steam-bubble steam-2" d="M 200 180 Q 230 130 210 80 Q 190 30 220 0" stroke="#FFFFFF" stroke-width="20" fill="none" stroke-linecap="round" opacity="0" />
+                <path class="steam-bubble steam-3" d="M 230 180 Q 210 140 240 100 Q 260 50 230 20" stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round" opacity="0" />
+            </g>
+        </g>
+
+        <!-- === שולי הסיר (מצוירים מעל האדים כדי שהאדים יצאו "מאחוריהם") === -->
+        <rect x="75" y="150" width="250" height="12" rx="4" fill="#94A3B8" />
+        <rect x="75" y="150" width="250" height="4" rx="2" fill="#CBD5E1" />
+
+        <!-- === קבוצת המכסה === -->
+        <g id="lid-group">
+            <path d="M 75 146 C 75 70, 325 70, 325 146 Z" fill="#D24A40" transform="translate(0, 4)" />
+            <path d="M 75 146 C 75 70, 325 70, 325 146 Z" fill="#EF6256" />
+            <g clip-path="url(#lid-mask)">
+                <path d="M 60 150 C 60 60, 180 50, 200 50 C 130 60, 100 100, 100 150 Z" fill="#FFFFFF" opacity="0.2" />
+            </g>
+            <path d="M 185 75 L 215 75 L 210 95 L 190 95 Z" fill="#C0453A" />
+            <rect x="165" y="55" width="70" height="20" rx="10" fill="#EAB308" />
+            <rect x="165" y="55" width="70" height="6" rx="3" fill="#FDE047" />
+        </g>
+
+        <!-- === הפנים === -->
+        <g transform="translate(0, 25)">
+            <circle cx="130" cy="205" r="12" fill="#FF8FAB" opacity="0.4" />
+            <circle cx="270" cy="205" r="12" fill="#FF8FAB" opacity="0.4" />
+
+            <!-- עין שמאל -->
+            <g class="eye-group">
+                <circle id="left-eye-bg" cx="155" cy="175" r="22" fill="#FFFFFF" />
+                <g id="left-pupil" class="moving-part">
+                    <circle cx="155" cy="175" r="11" fill="#181C20" />
+                    <circle cx="159" cy="170" r="4.5" fill="#FFFFFF" /> 
+                    <circle cx="151" cy="178" r="2" fill="#FFFFFF" />
+                </g>
+            </g>
+
+            <!-- עין ימין -->
+            <g class="eye-group">
+                <circle id="right-eye-bg" cx="245" cy="175" r="22" fill="#FFFFFF" />
+                <g id="right-pupil" class="moving-part">
+                    <circle cx="245" cy="175" r="11" fill="#181C20" />
+                    <circle cx="249" cy="170" r="4.5" fill="#FFFFFF" />
+                    <circle cx="241" cy="178" r="2" fill="#FFFFFF" />
+                </g>
+            </g>
+
+            <!-- פה ולשון -->
+            <g>
+                <path d="M 175 200 C 175 200, 200 235, 225 200 Z" fill="#181C20" />
+                <circle id="tongue-anchor" cx="200" cy="210" r="1" fill="none" />
+                <g id="tongue" class="moving-part">
+                    <path d="M 189 205 L 189 230 A 11 11 0 0 0 211 230 L 211 205 Z" fill="#FB7185" />
+                    <line x1="200" y1="205" x2="200" y2="232" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" />
+                </g>
+                <path d="M 172 200 Q 200 208 228 200" stroke="#2B3037" stroke-width="5" stroke-linecap="round" fill="none" />
+            </g>
+        </g>
+    </svg>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            function moveElement(elemId, bgElemId, maxDistance) {
+                const elem = document.getElementById(elemId);
+                const bgElem = document.getElementById(bgElemId);
+                
+                const rect = bgElem.getBoundingClientRect();
+                const centerX = rect.left + (rect.width / 2);
+                const centerY = rect.top + (rect.height / 2);
+
+                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
+                
+                const moveX = Math.cos(angle) * maxDistance;
+                const moveY = Math.sin(angle) * maxDistance;
+
+                elem.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+
+            moveElement('left-pupil', 'left-eye-bg', 8);
+            moveElement('right-pupil', 'right-eye-bg', 8);
+            moveElement('tongue', 'tongue-anchor', 3);
+        });
+
+        const potSvg = document.getElementById('pot-svg');
+        const lidGroup = document.getElementById('lid-group');
+        const steamWrapper = document.getElementById('steam-wrapper');
+
+        potSvg.addEventListener('click', () => {
+            lidGroup.classList.toggle('open');
+            steamWrapper.classList.toggle('show');
+        });
+    </script>
+
+</body>
+</html>
