@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדיניות פרטיות - תוסף צ'אט הגזירה</title>
+    <title>מדיניות פרטיות - תוסף חדשות הגיזרה</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f4f7f9;
             color: #333;
             line-height: 1.6;
@@ -14,7 +14,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             background: #fff;
             padding: 40px;
@@ -23,87 +23,102 @@
         }
         h1 {
             color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
             text-align: center;
         }
         h2 {
             color: #2980b9;
             margin-top: 25px;
             font-size: 1.4em;
+            border-right: 4px solid #3498db;
+            padding-right: 10px;
         }
         p, ul {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         ul {
-            padding-right: 20px;
+            padding-right: 25px;
         }
         li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         strong {
-            color: #000;
+            color: #2c3e50;
         }
         .footer {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #eee;
-            font-size: 0.9em;
+            font-size: 0.85em;
             text-align: center;
             color: #7f8c8d;
         }
         .highlight {
             background-color: #e8f4fd;
-            padding: 2px 5px;
+            padding: 3px 6px;
             border-radius: 4px;
             font-weight: bold;
+            color: #2980b9;
+        }
+        .important-note {
+            background-color: #fff9e6;
+            border: 1px solid #ffe58f;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>מדיניות פרטיות - תוסף "צ'אט הגזירה"</h1>
+    <h1>מדיניות פרטיות - תוסף "חדשות הגיזרה"</h1>
 
     <section>
         <h2>1. מבוא</h2>
-        <p>מערכת <strong>"הגיזרה"</strong> מכבדת את פרטיות המשתמשים בתוסף הדפדפן "צ'אט הגזירה" (להלן: "התוסף"). מדיניות פרטיות זו מפרטת כיצד התוסף פועל, באילו הרשאות הוא משתמש, ומדגישה כי איננו אוספים נתונים אישיים של המשתמשים.</p>
+        <p>מערכת <strong>"הגיזרה"</strong> (hagizra.news) מייחסת חשיבות עליונה לשמירה על פרטיות המשתמשים בתוסף הדפדפן <strong>"חדשות הגיזרה"</strong> (להלן: "התוסף"). מסמך זה מפרט את אופן פעולת התוסף, השימוש המינימלי בהרשאות, והתחייבותנו להגנה על מידע אישי.</p>
     </section>
+
+    <div class="important-note">
+        <strong>עיקרון המינימום:</strong> התוסף פועל על פי עיקרון ה-"Least Privilege" – אנו מבקשים אך ורק את ההרשאות ההכרחיות לתפעול השירות, ואיננו עושים בהן כל שימוש מעבר למצוין להלן.
+    </div>
 
     <section>
         <h2>2. איסוף מידע ונתונים אישיים</h2>
-        <p>התוסף <span class="highlight">אינו אוסף</span>, אינו שומר ואינו משדר נתונים אישיים מזהים, היסטוריית גלישה, נתוני מיקום, תוכן אתרים או כל פעילות משתמש אחרת לשרתים חיצוניים. פעולת התוסף מסתכמת בקבלת נתונים (מבזקים) מהשרתים שלנו והצגתם למשתמש.</p>
+        <p>התוסף <span class="highlight">אינו אוסף, אינו שומר ואינו משדר</span> כל מידע אישי מזהה (PII). התוסף אינו עוקב אחר היסטוריית הגלישה, אינו אוסף נתוני מיקום, אינו קורא תוכן מאתרים ואינו מנטר את פעילות המשתמש. פעולת התוסף חד-כיוונית: משיכת מבזקים מהשרת המאובטח שלנו והצגתם למשתמש.</p>
     </section>
 
     <section>
-        <h2>3. שימוש בהרשאות (Permissions)</h2>
-        <p>התוסף משתמש במספר הרשאות דפדפן למטרות פונקציונליות בלבד, ללא פגיעה בפרטיות:</p>
+        <h2>3. פירוט שימוש בהרשאות (Permissions)</h2>
+        <p>התוסף משתמש בהרשאות הבאות לצורך פונקציונליות טכנית בלבד:</p>
         <ul>
-            <li><strong>Storage (אחסון):</strong> משמש לשמירה מקומית בלבד של העדפות המשתמש (כגון הגדרות שמע והתראות) וזיכרון מטמון (Cache) לשיפור ביצועים. המידע לא עוזב את המחשב של המשתמש.</li>
-            <li><strong>Cookies (קובצי עוגיות):</strong> משמש אך ורק לבדיקה מקומית האם המשתמש מחובר למערכת "הגיזרה" (על ידי זיהוי קיום עוגיית התחברות של הדומיין hagizra.news), וזאת על מנת לאפשר או למנוע משיכת מבזקים.</li>
-            <li><strong>Tabs & Host Permissions:</strong> משמשות אך ורק לצורך הזרקת ההתראה החזותית (Toast) לתוך העמוד בו המשתמש צופה כרגע, מבלי לקרוא, לאסוף או לשמור את תוכן העמוד או את כתובתו.</li>
-            <li><strong>Alarms:</strong> משמש להפעלת רענון רקע תקופתי מול השרת שלנו כדי לבדוק האם התקבלו מבזקים חדשים.</li>
+            <li><strong>Cookies (קובצי עוגיות):</strong> הרשאה זו משמשת אך ורק לצורך אימות (Authentication) מול הדומיין <span class="highlight">hagizra.news</span>. התוסף בודק מקומית האם קיים אסימון התחברות בתוקף כדי לאפשר קבלת עדכונים. <strong>התוסף אינו ניגש לעוגיות של אף אתר אחר.</strong></li>
+            <li><strong>Host Permissions & Tabs:</strong> הרשאות אלו נדרשות טכנית כדי לאפשר הזרקה של רכיב ויזואלי (Toast Notification) לטאב הפעיל בעת קבלת מבזק דחוף. התוסף אינו קורא את תוכן האתרים ואינו שומר את כתובות ה-URL בהן המשתמש מבקר.</li>
+            <li><strong>Storage (אחסון):</strong> משמש לשמירת העדפות ממשק מקומיות בלבד (כגון הגדרות צליל או מצב התראות). המידע נשמר בדפדפן המשתמש ואינו מועבר לשרתים חיצוניים.</li>
+            <li><strong>Scripting & Alarms:</strong> משמשים להרצת בדיקה תקופתית ברקע מול ה-API של המערכת כדי לעדכן על חדשות חדשות בזמן אמת.</li>
         </ul>
     </section>
 
     <section>
-        <h2>4. שיתוף מידע עם צד שלישי</h2>
-        <p>מכיוון שהתוסף אינו אוסף נתוני משתמשים, שום מידע אינו מועבר, נמכר או משותף עם אף צד שלישי שהוא.</p>
+        <h2>4. העברת מידע לצד שלישי</h2>
+        <p>מכיוון שהתוסף אינו אוסף מידע, אין לנו כל אפשרות או כוונה למכור, להשכיר או לשתף מידע כלשהו עם גורמים שלישיים. אנו מתחייבים לשמירה מוחלטת על פרטיות המשתמש.</p>
     </section>
 
     <section>
-        <h2>5. אבטחת מידע</h2>
-        <p>התקשורת היחידה שהתוסף מבצע היא מול השרתים הרשמיים והמאובטחים של "הגיזרה" (<strong>hagizra.news</strong>) על גבי פרוטוקול מוצפן (HTTPS), וזאת לשם קבלת נתוני המבזקים בלבד.</p>
+        <h2>5. אבטחה ותקשורת</h2>
+        <p>כל התקשורת בין התוסף לשרתים מתבצעת באופן מוצפן באמצעות פרוטוקול <strong>HTTPS</strong> מאובטח. התוסף מתקשר אך ורק עם השרת הרשמי של מערכת הגיזרה.</p>
     </section>
 
     <section>
         <h2>6. יצירת קשר</h2>
-        <p>לכל שאלה או בירור בנושא פרטיות או בנושאים אחרים הקשורים לתוסף, ניתן לפנות אלינו בכתובת האימייל:</p>
-        <p style="text-align: center; font-weight: bold; color: #2980b9;">info@hamitbach.me</p>
+        <p>לשאלות נוספות בנוגע למדיניות הפרטיות או לתפעול התוסף, ניתן לפנות למחלקת התמיכה הטכנית שלנו בדוא"ל:</p>
+        <p style="text-align: center; font-size: 1.1em; font-weight: bold; color: #2980b9; background: #f9f9f9; padding: 10px; border-radius: 5px;">info@hamitbach.me</p>
     </section>
 
     <div class="footer">
-        &copy; 2026 מערכת הגיזרה. כל הזכויות שמורות.
+        &copy; 2026 מערכת הגיזרה - כל הזכויות שמורות.<br>
+        השימוש בתוסף כפוף למדיניות הפרטיות המפורטת לעיל.
     </div>
 </div>
 
